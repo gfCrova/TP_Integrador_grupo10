@@ -43,7 +43,7 @@ public class Main {
 
         Pronostico pronostico1 = new Pronostico(ronda1.getPartidos().get(0), ronda1.getPartidos().get(0).getEquipoLocal());
         Pronostico pronostico2 = new Pronostico(ronda1.getPartidos().get(1), ronda1.getPartidos().get(1).getEquipoLocal());
-        Pronostico pronostico3 = new Pronostico(ronda1.getPartidos().get(2), ronda1.getPartidos().get(2).getEquipoVisitante());
+        Pronostico pronostico3 = new Pronostico(ronda1.getPartidos().get(2), ronda1.getPartidos().get(2).getEquipoLocal());
 
         persona1.getPronostico().add(pronostico1);
         persona1.getPronostico().add(pronostico2);
@@ -61,12 +61,22 @@ public class Main {
                 String equipo2 = linea.split(",")[4];
 
                 for (Pronostico p : listaPronosticos) {
-                    if (gana1.contains("x") || gana2.contains("x")) {
-                        p.setResultado(GANADOR);
-                    } else if (empata.contains("x")) {
-                        p.setResultado(EMPATE);
-                    } else {
-                        p.setResultado(PERDEDOR);
+                    if (equipo1.equals(p.getPartido().getEquipoLocal().getNombre())) {
+                        if (gana1.contains("x")) {
+                            p.setResultado(GANADOR);
+                        } else if (empata.contains("x")) {
+                            p.setResultado(EMPATE);
+                        } else {
+                            p.setResultado(PERDEDOR);
+                        }
+                    } else if (equipo2.equals(p.getPartido().getEquipoVisitante().getNombre())) {
+                        if (gana2.contains("x")) {
+                            p.setResultado(GANADOR);
+                        } else if (empata.contains("x")) {
+                            p.setResultado(EMPATE);
+                        } else {
+                            p.setResultado(PERDEDOR);
+                        }
                     }
                 }
             }
@@ -74,7 +84,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println(persona1.getNombre() + " - Puntaje Total: " + persona1.getRonda().totalPuntos(listaPronosticos));
+        System.out.println(persona1.getNombre() + ": Puntaje Total = " + persona1.getRonda().totalPuntos(listaPronosticos));
 
     }
 }

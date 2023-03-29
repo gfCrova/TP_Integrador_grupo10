@@ -1,9 +1,6 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -41,15 +38,16 @@ public class Main {
 
         //////////////////////////////////////////////////////
 
-        Pronostico pron1 = new Pronostico();
-        pron1.setPartido(ronda1.getPartidos().get(0));
-        pron1.setEquipo(ronda1.getPartidos().get(0).getEquipoLocal());
-        pron1.setResultado(GANADOR);
+        ArrayList<Pronostico> listaPronosticos = new ArrayList<>();
+        Persona persona1 = new Persona("Diego", ronda1, listaPronosticos);
 
-        Pronostico pron2 = new Pronostico();
-        pron2.setPartido(ronda1.getPartidos().get(1));
-        pron2.setEquipo(ronda1.getPartidos().get(1).getEquipoVisitante());
-        pron2.setResultado(PERDEDOR);
+        Pronostico pronostico1 = new Pronostico(ronda1.getPartidos().get(0), ronda1.getPartidos().get(0).getEquipoLocal());
+        Pronostico pronostico2 = new Pronostico(ronda1.getPartidos().get(1), ronda1.getPartidos().get(1).getEquipoLocal());
+        Pronostico pronostico3 = new Pronostico(ronda1.getPartidos().get(2), ronda1.getPartidos().get(2).getEquipoVisitante());
+
+        persona1.getPronostico().add(pronostico1);
+        persona1.getPronostico().add(pronostico2);
+        persona1.getPronostico().add(pronostico3);
 
         try {
             String pronosticos = "src\\main\\java\\org\\example\\csv\\pronosticos.csv";
@@ -62,21 +60,21 @@ public class Main {
                 String gana2 = linea.split(",")[3];
                 String equipo2 = linea.split(",")[4];
 
-                if (gana1.contains("x")){
-                    System.out.println(pron1.puntos());
-                    System.out.println(pron2.puntos());
-                    break;
-                } else if (empata.contains("x")) {
-                    System.out.println(pron1.puntos());
-                    System.out.println(pron2.puntos());
-                    break;
-                } else if (gana2.contains("x")) {
-                    System.out.println(pron1.puntos());
-                    System.out.println(pron2.puntos());
+                for (Pronostico p : listaPronosticos) {
+                    if (gana1.contains("x") || gana2.contains("x")) {
+                        p.setResultado(GANADOR);
+                    } else if (empata.contains("x")) {
+                        p.setResultado(EMPATE);
+                    } else {
+                        p.setResultado(PERDEDOR);
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println(persona1.getNombre() + " - Puntaje Total: " + persona1.getRonda().totalPuntos(listaPronosticos));
+
     }
 }

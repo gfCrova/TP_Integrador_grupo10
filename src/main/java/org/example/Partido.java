@@ -58,14 +58,13 @@ public class Partido {
         } else if (equipo == equipoVisitante) {
             if (getGolesVisitante() > getGolesLocal()) {
                 return ResultadoEnum.GANADOR;
-            } else if  (getGolesLocal() == getGolesVisitante()) {
+            } else if (getGolesLocal() == getGolesVisitante()) {
                 return ResultadoEnum.EMPATE;
             } else {
                 return ResultadoEnum.PERDEDOR;
             }
-        } else {
-            return ResultadoEnum.EMPATE;
         }
+        return ResultadoEnum.PERDEDOR;
     }
 
     @Override

@@ -9,14 +9,15 @@ import static org.example.ResultadoEnum.*;
 
 public class Main {
 
+    private static final String resultados = "src\\main\\java\\org\\example\\csv\\resultados.csv";
+    private static final String pronosticos = "src\\main\\java\\org\\example\\csv\\pronosticos.csv";
+
     public static void main(String[] args) {
 
         ArrayList<Partido> partidosRonda1 = new ArrayList<Partido>();
         Ronda ronda1 = new Ronda("Ronda 1", partidosRonda1);
 
         try {
-            String resultados = "src\\main\\java\\org\\example\\csv\\resultados.csv";
-
             for (String linea : Files.readAllLines(Paths.get(resultados))) {
 
                 String equipo1 = linea.split(",")[0];
@@ -55,10 +56,7 @@ public class Main {
         persona1.getPronostico().add(pronostico2);
         persona1.getPronostico().add(pronostico3);
 
-
         try {
-            String pronosticos = "src\\main\\java\\org\\example\\csv\\pronosticos.csv";
-
             for (String linea : Files.readAllLines(Paths.get(pronosticos))) {
 
                 String equipo1 = linea.split(",")[0];

@@ -4,6 +4,15 @@ public class Partido {
 
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
+    private int golesLocal;
+    private int golesVisitante;
+
+    public Partido(Equipo equipoLocal, int golesLocal, int golesVisitante, Equipo equipoVisitante) {
+        this.equipoLocal = equipoLocal;
+        this.golesLocal = golesLocal;
+        this.golesVisitante = golesVisitante;
+        this.equipoVisitante = equipoVisitante;
+    }
 
     public Equipo getEquipoLocal() {
         return equipoLocal;
@@ -21,40 +30,48 @@ public class Partido {
         this.equipoVisitante = visitante;
     }
 
+    public int getGolesLocal() {
+        return golesLocal;
+    }
+
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
+    }
+
+    public int getGolesVisitante() {
+        return golesVisitante;
+    }
+
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
+    }
+
     public ResultadoEnum resultadoPartido(Equipo equipo) {
         if (equipo == equipoLocal) {
-            if (equipoLocal.getCantidadGoles() > equipoVisitante.getCantidadGoles()) {
-                System.out.println("Resultado del partido: \n" +
-                        ResultadoEnum.GANADOR + " " + equipoLocal.getNombre() + " " + equipoLocal.getCantidadGoles() + " - " +
-                        equipoVisitante.getCantidadGoles() + " " + equipoVisitante.getNombre() + " " + ResultadoEnum.PERDEDOR);
+            if (getGolesLocal() > getGolesVisitante()) {
                 return ResultadoEnum.GANADOR;
-            } else if  (equipoLocal.getCantidadGoles() == equipoVisitante.getCantidadGoles()) {
-                System.out.println("Resultado del partido: \n" +
-                        ResultadoEnum.EMPATE + ": " + equipoLocal.getNombre() + " " + equipoLocal.getCantidadGoles() + " - " + equipoVisitante.getCantidadGoles() + " " + equipoVisitante.getNombre());
+            } else if  (getGolesLocal() == getGolesVisitante()) {
                 return ResultadoEnum.EMPATE;
             } else {
                 return ResultadoEnum.PERDEDOR;
             }
         } else if (equipo == equipoVisitante) {
-            if (equipoVisitante.getCantidadGoles() > equipoLocal.getCantidadGoles()) {
-                System.out.println("Resultado del partido: \n" +
-                        ResultadoEnum.PERDEDOR + " " + equipoLocal.getNombre() + " " + equipoLocal.getCantidadGoles() + " - " +
-                        equipoVisitante.getCantidadGoles() + " " + equipoVisitante.getNombre() + " " + ResultadoEnum.GANADOR);
+            if (getGolesVisitante() > getGolesLocal()) {
                 return ResultadoEnum.GANADOR;
-            } else if  (equipoLocal.getCantidadGoles() == equipoVisitante.getCantidadGoles()) {
-                System.out.println("Resultado del partido: \n" +
-                        ResultadoEnum.EMPATE + ": " + equipoLocal.getNombre() + " " + equipoLocal.getCantidadGoles() + " - " + equipoVisitante.getCantidadGoles() + " " + equipoVisitante.getNombre());
+            } else if  (getGolesLocal() == getGolesVisitante()) {
                 return ResultadoEnum.EMPATE;
             } else {
                 return ResultadoEnum.PERDEDOR;
             }
         } else {
-            if (equipoLocal.getCantidadGoles() == equipoVisitante.getCantidadGoles()) {
-                System.out.println("Resultado del partido: \n" +
-                        ResultadoEnum.EMPATE + ": " + equipoLocal.getNombre() + " " + equipoLocal.getCantidadGoles() + " - " + equipoVisitante.getCantidadGoles() + " " + equipoVisitante.getNombre());
-                return ResultadoEnum.EMPATE;
-            }
             return ResultadoEnum.EMPATE;
         }
+    }
+
+    @Override
+    public String toString() {
+        return " Partido { " +
+                equipoLocal + " " + golesLocal + " - " + golesVisitante + " " + equipoVisitante +
+                " } \n";
     }
 }

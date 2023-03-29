@@ -9,10 +9,9 @@ public class Pronostico {
     public Pronostico() {
     }
 
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultado) {
+    public Pronostico(Partido partido, Equipo equipo) {
         this.partido = partido;
         this.equipo = equipo;
-        this.resultado = resultado;
     }
 
     public Partido getPartido() {
@@ -40,12 +39,13 @@ public class Pronostico {
     }
 
     public int puntos() {
+        int total = 0;
         if (partido.resultadoPartido(equipo).equals(resultado)) {
-            System.out.println("Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' ACERTADO. Puntos obtenidos: ");
-            return 1;
+            System.out.println("Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' ACERTADO. Puntos obtenidos: " + 1);
+            return total += 1;
         } else {
-            System.out.println("Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' NO acertado. Puntos obtenidos: ");
-            return 0;
+            System.out.println("Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' NO acertado. Puntos obtenidos: " + 0);
+            return total += 0;
         }
     }
 }

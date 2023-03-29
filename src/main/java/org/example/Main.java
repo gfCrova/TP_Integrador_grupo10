@@ -38,16 +38,23 @@ public class Main {
 
         //////////////////////////////////////////////////////
 
+        // Obteniendo los partidos de la Ronda 1
+        Partido partido1 = ronda1.getPartidos().get(0); // Arg vs Bra
+        Partido partido2 = ronda1.getPartidos().get(1); // Uru vs Chi
+        Partido partido3 = ronda1.getPartidos().get(2); // Col vs Per
+
+        // Creando Pronosticos de la ronda 1 y agregandolos al ArrayList de Pronosticos de la Persona
+        Pronostico pronostico1 = new Pronostico(partido1, partido1.getEquipoLocal());
+        Pronostico pronostico2 = new Pronostico(partido2, partido2.getEquipoLocal());
+        Pronostico pronostico3 = new Pronostico(partido3, partido3.getEquipoLocal());
+
         ArrayList<Pronostico> listaPronosticos = new ArrayList<>();
         Persona persona1 = new Persona("Diego", ronda1, listaPronosticos);
-
-        Pronostico pronostico1 = new Pronostico(ronda1.getPartidos().get(0), ronda1.getPartidos().get(0).getEquipoLocal());
-        Pronostico pronostico2 = new Pronostico(ronda1.getPartidos().get(1), ronda1.getPartidos().get(1).getEquipoLocal());
-        Pronostico pronostico3 = new Pronostico(ronda1.getPartidos().get(2), ronda1.getPartidos().get(2).getEquipoLocal());
 
         persona1.getPronostico().add(pronostico1);
         persona1.getPronostico().add(pronostico2);
         persona1.getPronostico().add(pronostico3);
+
 
         try {
             String pronosticos = "src\\main\\java\\org\\example\\csv\\pronosticos.csv";
@@ -60,22 +67,22 @@ public class Main {
                 String gana2 = linea.split(",")[3];
                 String equipo2 = linea.split(",")[4];
 
-                for (Pronostico p : listaPronosticos) {
-                    if (equipo1.equals(p.getPartido().getEquipoLocal().getNombre())) {
+                for (Pronostico pron : listaPronosticos) {
+                    if (equipo1.equals(pron.getPartido().getEquipoLocal().getNombre())) {
                         if (gana1.contains("x")) {
-                            p.setResultado(GANADOR);
+                            pron.setResultado(GANADOR);
                         } else if (empata.contains("x")) {
-                            p.setResultado(EMPATE);
+                            pron.setResultado(EMPATE);
                         } else {
-                            p.setResultado(PERDEDOR);
+                            pron.setResultado(PERDEDOR);
                         }
-                    } else if (equipo2.equals(p.getPartido().getEquipoVisitante().getNombre())) {
+                    } else if (equipo2.equals(pron.getPartido().getEquipoVisitante().getNombre())) {
                         if (gana2.contains("x")) {
-                            p.setResultado(GANADOR);
+                            pron.setResultado(GANADOR);
                         } else if (empata.contains("x")) {
-                            p.setResultado(EMPATE);
+                            pron.setResultado(EMPATE);
                         } else {
-                            p.setResultado(PERDEDOR);
+                            pron.setResultado(PERDEDOR);
                         }
                     }
                 }
@@ -84,7 +91,9 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println(persona1.getNombre() + ": Puntaje Total = " + persona1.getRonda().totalPuntos(listaPronosticos));
+        // Mostrando el puntaje total de los pronosticos dados por una persona
+        int puntajeTotal = persona1.getRonda().totalPuntos(listaPronosticos);
+        System.out.println(persona1.getNombre() + ": Puntaje Total = " + puntajeTotal);
 
     }
 }

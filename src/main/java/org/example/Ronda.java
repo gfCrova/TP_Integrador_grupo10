@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Ronda {
 
     private String numero;
-
     private ArrayList<Partido> partidos;
 
     public Ronda(String numero, ArrayList<Partido> partidos) {
@@ -29,14 +28,14 @@ public class Ronda {
         this.partidos = partidos;
     }
 
-    public int totalPuntos() {
-        return 0;
-    };
-
-    @Override
-    public String toString() {
-        return "Ronda {" +
-                " partidos: " + partidos +
-                '}';
+    public int totalPuntos(ArrayList<Pronostico> pronosticos) {
+        int i = 0;
+        int total = 0;
+        while (i < pronosticos.size()) {
+            total += pronosticos.get(i).puntos();
+            i++;
+        }
+        return total;
     }
+
 }

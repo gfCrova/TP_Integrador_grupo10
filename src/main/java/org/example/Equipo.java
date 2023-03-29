@@ -3,14 +3,9 @@ package org.example;
 public class Equipo {
     private String nombre;
     private String descripcion;
-    private int cantidadGoles;
 
-    public Equipo() {
-    }
-
-    public Equipo(String nombre, String descripcion) {
+    public Equipo(String nombre) {
         this.nombre = nombre;
-        this.descripcion = descripcion;
     }
 
     public String getNombre() {
@@ -29,11 +24,8 @@ public class Equipo {
         this.descripcion = descripcion;
     }
 
-    public int getCantidadGoles() {
-        return cantidadGoles;
-    }
-
-    public void setCantidadGoles(int cantidadGoles) {
-        this.cantidadGoles = cantidadGoles;
+    @Override
+    public String toString() {
+        return nombre;
     }
 }

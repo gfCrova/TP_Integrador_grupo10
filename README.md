@@ -1,4 +1,4 @@
-<h1 align="center">Trabajo Práctico Integrador</h1>
+<h1 align="center">Trabajo Práctico Integrador <img align="right" src="https://user-images.githubusercontent.com/103906625/228979535-033e2f44-44a9-4a56-b7a9-75a378c62205.png" width="200"/></h1>
 
 <h2><i>"Pronósticos Deportivos"</i></h2>
 

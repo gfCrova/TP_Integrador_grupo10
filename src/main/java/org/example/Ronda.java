@@ -7,6 +7,9 @@ public class Ronda {
     private String numero;
     private ArrayList<Partido> partidos;
 
+    public Ronda() {
+    }
+
     public Ronda(String numero, ArrayList<Partido> partidos) {
         this.numero = numero;
         this.partidos = partidos;

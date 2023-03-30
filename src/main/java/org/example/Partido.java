@@ -7,6 +7,9 @@ public class Partido {
     private int golesLocal;
     private int golesVisitante;
 
+    public Partido() {
+    }
+
     public Partido(Equipo equipoLocal, int golesLocal, int golesVisitante, Equipo equipoVisitante) {
         this.equipoLocal = equipoLocal;
         this.golesLocal = golesLocal;

@@ -74,15 +74,6 @@ public class Main {
                             pron.setResultado(EMPATE);
                         }
                     }
-                    /*} else if (equipo2.equals(pron.getPartido().getEquipoVisitante().getNombre())) {
-                        if (gana2.contains("x")) {
-                            pron.setResultado(GANADOR);
-                        } else if (empata.contains("x")) {
-                            pron.setResultado(EMPATE);
-                        } else {
-                            pron.setResultado(PERDEDOR);
-                        }
-                    }*/
                 }
             }
         } catch (IOException e) {

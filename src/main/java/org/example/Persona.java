@@ -46,6 +46,7 @@ public class Persona {
         return "Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", ronda=" + ronda +
+                ", ronda=" + ronda +
                 ", pronostico=" + pronostico +
                 '}';
     }

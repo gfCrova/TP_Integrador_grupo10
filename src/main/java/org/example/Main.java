@@ -42,12 +42,12 @@ public class Main {
         // Obteniendo los partidos de la Ronda 1
         Partido partido1 = ronda1.getPartidos().get(0); // Arg vs Bra
         Partido partido2 = ronda1.getPartidos().get(1); // Uru vs Chi
-        Partido partido3 = ronda1.getPartidos().get(2); // Col vs Per
+        Partido partido3 = ronda1.getPartidos().get(2); // Per vs Col
 
         // Creando Pronosticos de la ronda 1 y agregandolos al ArrayList de Pronosticos de la Persona
         Pronostico pronostico1 = new Pronostico(partido1, partido1.getEquipoLocal());
         Pronostico pronostico2 = new Pronostico(partido2, partido2.getEquipoLocal());
-        Pronostico pronostico3 = new Pronostico(partido3, partido3.getEquipoLocal());
+        Pronostico pronostico3 = new Pronostico(partido3, partido3.getEquipoVisitante());
 
         ArrayList<Pronostico> listaPronosticos = new ArrayList<>();
         Persona persona1 = new Persona("Diego", ronda1, listaPronosticos);
@@ -66,15 +66,15 @@ public class Main {
                 String equipo2 = linea.split(",")[4];
 
                 for (Pronostico pron : listaPronosticos) {
-                    if (equipo1.equals(pron.getPartido().getEquipoLocal().getNombre())) {
-                        if (gana1.contains("x")) {
+                    String equipo = pron.getPartido().getEquipoLocal().getNombre();
+                    if (equipo1.equals(equipo) || equipo2.equals(equipo)) {
+                        if (gana1.contains("x") || gana2.contains("x")) {
                             pron.setResultado(GANADOR);
                         } else if (empata.contains("x")) {
                             pron.setResultado(EMPATE);
-                        } else {
-                            pron.setResultado(PERDEDOR);
                         }
-                    } else if (equipo2.equals(pron.getPartido().getEquipoVisitante().getNombre())) {
+                    }
+                    /*} else if (equipo2.equals(pron.getPartido().getEquipoVisitante().getNombre())) {
                         if (gana2.contains("x")) {
                             pron.setResultado(GANADOR);
                         } else if (empata.contains("x")) {
@@ -82,7 +82,7 @@ public class Main {
                         } else {
                             pron.setResultado(PERDEDOR);
                         }
-                    }
+                    }*/
                 }
             }
         } catch (IOException e) {

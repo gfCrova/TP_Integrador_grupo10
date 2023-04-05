@@ -1,5 +1,12 @@
 package org.example;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static org.example.ResultadoEnum.EMPATE;
+import static org.example.ResultadoEnum.GANADOR;
+
 public class Pronostico {
 
     private Partido partido;
@@ -38,13 +45,13 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
-    public int puntos() {
+    public int puntos(Persona persona) {
         int total = 0;
         if (partido.resultadoPartido(equipo).equals(resultado)) {
-            System.out.println("Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' ACERTADO. Puntos obtenidos: " + 1);
+            System.out.println(persona.getNombre() + ": Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' ACERTADO. Puntos: +" + 1);
             return total += 1;
         } else {
-            System.out.println("Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' NO acertado. Puntos obtenidos: " + 0);
+            System.out.println(persona.getNombre() + ": Pronóstico '" + this.equipo.getNombre() + " " + resultado + "' NO acertado. Puntos: " + 0);
             return total += 0;
         }
     }

@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<Partido> partidosRonda1 = new ArrayList<Partido>();
+        ArrayList<Partido> partidosRonda1 = new ArrayList<>();
         Ronda ronda1 = new Ronda("Ronda 1", partidosRonda1);
 
         try {
@@ -39,39 +39,57 @@ public class Main {
 
         //////////////////////////////////////////////////////
 
-        // Obteniendo los partidos de la Ronda 1
-        Partido partido1 = ronda1.getPartidos().get(0); // Arg vs Bra
-        Partido partido2 = ronda1.getPartidos().get(1); // Uru vs Chi
-        Partido partido3 = ronda1.getPartidos().get(2); // Per vs Col
+        // Creando Pronósticos y agregándolos al ArrayList de Pronósticos de la Persona
+        Persona persona1 = new Persona("Diego", ronda1, new ArrayList<>());
+        Pronostico pron1Diego = new Pronostico(partidosRonda1.get(0), partidosRonda1.get(0).getEquipoLocal());
+        Pronostico pron2Diego  = new Pronostico(partidosRonda1.get(1), partidosRonda1.get(1).getEquipoLocal());
+        Pronostico pron3Diego  = new Pronostico(partidosRonda1.get(2), partidosRonda1.get(2).getEquipoVisitante());
+        Pronostico pron4Diego  = new Pronostico(partidosRonda1.get(3), partidosRonda1.get(3).getEquipoVisitante());
+        persona1.getPronostico().add(pron1Diego);
+        persona1.getPronostico().add(pron2Diego);
+        persona1.getPronostico().add(pron3Diego);
+        persona1.getPronostico().add(pron4Diego);
 
-        // Creando Pronosticos de la ronda 1 y agregandolos al ArrayList de Pronosticos de la Persona
-        Pronostico pronostico1 = new Pronostico(partido1, partido1.getEquipoLocal());
-        Pronostico pronostico2 = new Pronostico(partido2, partido2.getEquipoLocal());
-        Pronostico pronostico3 = new Pronostico(partido3, partido3.getEquipoVisitante());
+        Persona persona2 = new Persona("Julieta", ronda1, new ArrayList<>());
+        Pronostico pron1Julieta = new Pronostico(partidosRonda1.get(0), partidosRonda1.get(0).getEquipoLocal());
+        Pronostico pron2Julieta  = new Pronostico(partidosRonda1.get(1), partidosRonda1.get(1).getEquipoVisitante());
+        Pronostico pron3Julieta  = new Pronostico(partidosRonda1.get(2), partidosRonda1.get(2).getEquipoLocal());
+        Pronostico pron4Julieta  = new Pronostico(partidosRonda1.get(3), partidosRonda1.get(3).getEquipoLocal());
+        persona2.getPronostico().add(pron1Julieta);
+        persona2.getPronostico().add(pron2Julieta);
+        persona2.getPronostico().add(pron3Julieta);
+        persona2.getPronostico().add(pron4Julieta);
 
-        ArrayList<Pronostico> listaPronosticos = new ArrayList<>();
-        Persona persona1 = new Persona("Diego", ronda1, listaPronosticos);
+        leerPronostico(pronosticos, persona1);
+        leerPronostico(pronosticos, persona2);
 
-        persona1.getPronostico().add(pronostico1);
-        persona1.getPronostico().add(pronostico2);
-        persona1.getPronostico().add(pronostico3);
+        int total1 = persona1.getRonda().totalPuntos(persona1.getPronostico(), persona1);
+        int total2 = persona2.getRonda().totalPuntos(persona2.getPronostico(), persona2);
+        System.out.println( "\n" + "Puntaje Total: \n" +
+                persona1.getNombre() + ": " + total1 + "\n" +
+                persona2.getNombre() + ": " + total2);
+    }
 
+    public static void leerPronostico(String file, Persona user) {
         try {
-            for (String linea : Files.readAllLines(Paths.get(pronosticos))) {
+            for (String linea : Files.readAllLines(Paths.get(file))) {
 
-                String equipo1 = linea.split(",")[0];
-                String gana1 = linea.split(",")[1];
-                String empata = linea.split(",")[2];
-                String gana2 = linea.split(",")[3];
-                String equipo2 = linea.split(",")[4];
+                String persona = linea.split(",")[0];
+                String equipo1 = linea.split(",")[1];
+                String gana1 = linea.split(",")[2];
+                String empata = linea.split(",")[3];
+                String gana2 = linea.split(",")[4];
+                String equipo2 = linea.split(",")[5];
 
-                for (Pronostico pron : listaPronosticos) {
+                for (Pronostico pron : user.getPronostico()) {
                     String equipo = pron.getPartido().getEquipoLocal().getNombre();
-                    if (equipo1.equals(equipo) || equipo2.equals(equipo)) {
-                        if (gana1.contains("x") || gana2.contains("x")) {
-                            pron.setResultado(GANADOR);
-                        } else if (empata.contains("x")) {
-                            pron.setResultado(EMPATE);
+                    if (persona.equals(user.getNombre())) {
+                        if (equipo1.equals(equipo) || equipo2.equals(equipo)) {
+                            if (gana1.contains("x") || gana2.contains("x")) {
+                                pron.setResultado(GANADOR);
+                            } else if (empata.contains("x")) {
+                                pron.setResultado(EMPATE);
+                            }
                         }
                     }
                 }
@@ -79,10 +97,5 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Mostrando el puntaje total de los pronosticos dados por una persona
-        int puntajeTotal = persona1.getRonda().totalPuntos(listaPronosticos);
-        System.out.println(persona1.getNombre() + ": Puntaje Total = " + puntajeTotal);
-
     }
 }

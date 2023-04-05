@@ -72,8 +72,6 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "\t" +
-                equipoLocal + " " + golesLocal + " - " + golesVisitante + " " + equipoVisitante +
-                "\n";
+        return "\t" + equipoLocal + " " + golesLocal + " - " + golesVisitante + " " + equipoVisitante + "\n";
     }
 }

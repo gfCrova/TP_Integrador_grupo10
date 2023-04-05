@@ -31,11 +31,11 @@ public class Ronda {
         this.partidos = partidos;
     }
 
-    public int totalPuntos(ArrayList<Pronostico> pronosticos) {
+    public int totalPuntos(ArrayList<Pronostico> pronosticos, Persona persona) {
         int i = 0;
         int total = 0;
         while (i < pronosticos.size()) {
-            total += pronosticos.get(i).puntos();
+            total += pronosticos.get(i).puntos(persona);
             i++;
         }
         return total;

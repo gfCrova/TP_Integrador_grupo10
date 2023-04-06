@@ -1,20 +1,10 @@
 package org.example;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import static org.example.ResultadoEnum.EMPATE;
-import static org.example.ResultadoEnum.GANADOR;
-
 public class Pronostico {
 
     private Partido partido;
     private Equipo equipo;
     private ResultadoEnum resultado;
-
-    public Pronostico() {
-    }
 
     public Pronostico(Partido partido, Equipo equipo) {
         this.partido = partido;

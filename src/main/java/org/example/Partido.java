@@ -53,13 +53,13 @@ public class Partido {
         if (equipo == equipoLocal) {
             if (getGolesLocal() > getGolesVisitante()) {
                 return ResultadoEnum.GANADOR;
-            } else if  (getGolesLocal() == getGolesVisitante()) {
+            } else if (getGolesLocal() == getGolesVisitante()) {
                 return ResultadoEnum.EMPATE;
             } else {
                 return ResultadoEnum.PERDEDOR;
             }
         } else if (equipo == equipoVisitante) {
-            if (getGolesVisitante() > getGolesLocal()) {
+            if (getGolesLocal() < getGolesVisitante()) {
                 return ResultadoEnum.GANADOR;
             } else if (getGolesLocal() == getGolesVisitante()) {
                 return ResultadoEnum.EMPATE;
@@ -67,7 +67,7 @@ public class Partido {
                 return ResultadoEnum.PERDEDOR;
             }
         }
-        return ResultadoEnum.PERDEDOR;
+        return ResultadoEnum.EMPATE;
     }
 
     @Override

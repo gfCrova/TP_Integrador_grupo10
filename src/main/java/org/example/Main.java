@@ -9,12 +9,8 @@ import static org.example.ResultadoEnum.*;
 
 public class Main {
 
-    //private static final String resultados = "src\\main\\java\\org\\example\\inputFiles\\resultados.csv";
-    //private static final String pronosticos = "src\\main\\java\\org\\example\\inputFiles\\pronosticos.csv";
-
-
     public static void main(String[] args) {
-        iFiles files = new iFiles();
+        InputFiles files = new InputFiles();
 
         // ***** Salida de Partidos de la Ronda
         ArrayList<Partido> partidosRonda1 = new ArrayList<>();
@@ -32,8 +28,8 @@ public class Main {
         Persona Diego = new Persona("Diego", ronda1, new ArrayList<>());
         Persona Julieta = new Persona("Julieta", ronda1, new ArrayList<>());
 
-        leerPronostico(files.getFilePronosticos(), Diego);
-        leerPronostico(files.getFilePronosticos(), Julieta);
+        leerPronosticos(files.getFilePronosticos(), Diego);
+        leerPronosticos(files.getFilePronosticos(), Julieta);
 
         // ***** Salida del Puntaje Total entre los participates.
 
@@ -71,7 +67,7 @@ public class Main {
         Se recorre la Ronda de partidos y se crea un pronóstico para cada partido.
          Se recorre el archivo y se verifica si los resultados de los partidos coinciden con los pronósticos dados
             por la Persona y se le asigna un Resultado */
-    public static void leerPronostico(String file, Persona user) {
+    public static void leerPronosticos(String file, Persona user) {
         try {
             int count = 0;
             while (count < user.getRonda().getPartidos().size()) {

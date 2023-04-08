@@ -9,8 +9,8 @@ import static org.example.ResultadoEnum.*;
 
 public class Main {
 
-    private static final String resultados = "src\\main\\java\\org\\example\\csv\\resultados.csv";
-    private static final String pronosticos = "src\\main\\java\\org\\example\\csv\\pronosticos.csv";
+    private static final String resultados = "src\\main\\java\\org\\example\\inputFiles\\resultados.csv";
+    private static final String pronosticos = "src\\main\\java\\org\\example\\inputFiles\\pronosticos.csv";
 
     public static void main(String[] args) {
 

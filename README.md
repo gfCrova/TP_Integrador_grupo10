@@ -9,6 +9,5 @@ obtenido a los participantes, sin importar los goles ni la estructura del torneo
 sumarán puntos y se obtendrá un listado final.
 </p>
 
-> ## Argentina Programa (UTN) Java Inicial
-
-> ### Grupo 10
+> ## Argentina Programa (UTN) Java Inicial 
+### ```Grupo 10```

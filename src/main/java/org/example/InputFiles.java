@@ -6,6 +6,6 @@ public class iFiles {
     public String getFileResultados() { return "src\\main\\resources\\resultados.csv";}
 
     public String getFilePronosticos() {
-        return "src\\main\\java\\resources\\pronosticos.csv";
+        return "src\\main\\resources\\pronosticos.csv";
     }
 }

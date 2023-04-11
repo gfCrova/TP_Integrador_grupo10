@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 
-public class testPuntajes {
+public class PuntajesTest {
 
     FilesService files = new FilesService();
     ArrayList<Partido> partidos = new ArrayList<Partido>();

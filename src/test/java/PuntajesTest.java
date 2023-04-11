@@ -1,11 +1,14 @@
-import org.example.*;
+import org.example.Entidades.Partido;
+import org.example.Entidades.Persona;
+import org.example.Entidades.Ronda;
+import org.example.Services.FilesService;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 
 public class testPuntajes {
 
-    InputFiles files = new InputFiles();
+    FilesService files = new FilesService();
     ArrayList<Partido> partidos = new ArrayList<Partido>();
     Ronda ronda = new Ronda("Ronda", partidos);
     Persona Carlos = new Persona("Carlos", ronda, new ArrayList<>());
@@ -13,8 +16,8 @@ public class testPuntajes {
     @org.junit.jupiter.api.Test
     public void testPuntosRonda1() {
 
-        Main.leerResultados(files.getFileTestRonda1(), partidos);
-        Main.leerPronosticos(files.getFileTestPron1(), Carlos);
+        files.leerResultados(files.getFileTestRonda1(), partidos);
+        files.leerPronosticos(files.getFileTestPron1(), Carlos);
 
         int result = Carlos.getRonda().totalPuntos(Carlos.getPronostico(), Carlos);
         int resultadoEsperado = 6;
@@ -26,8 +29,8 @@ public class testPuntajes {
     @org.junit.jupiter.api.Test
     public void testPuntosRonda2() {
 
-        Main.leerResultados(files.getFileTestRonda2(), partidos);
-        Main.leerPronosticos(files.getFileTestPron2(), Carlos);
+        files.leerResultados(files.getFileTestRonda2(), partidos);
+        files.leerPronosticos(files.getFileTestPron2(), Carlos);
 
         int result = Carlos.getRonda().totalPuntos(Carlos.getPronostico(), Carlos);
         int resultadoEsperado = 7;

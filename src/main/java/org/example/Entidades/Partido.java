@@ -1,4 +1,6 @@
-package org.example;
+package org.example.Entidades;
+
+import org.example.Enums.ResultadoEnum;
 
 public class Partido {
 

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Entidades;
 
 public class Equipo {
     private String nombre;

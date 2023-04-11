@@ -1,4 +1,4 @@
-package org.example.Enum;
+package org.example.Enums;
 
 public enum ResultadoEnum {
     GANADOR, PERDEDOR, EMPATE

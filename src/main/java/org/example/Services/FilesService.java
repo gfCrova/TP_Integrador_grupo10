@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Services;
 
 import org.example.Entidades.Equipo;
 import org.example.Entidades.Partido;
@@ -10,12 +10,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import static java.nio.file.Files.readAllLines;
-import static org.example.ResultadoEnum.EMPATE;
-import static org.example.ResultadoEnum.GANADOR;
+import static org.example.Enums.ResultadoEnum.EMPATE;
+import static org.example.Enums.ResultadoEnum.GANADOR;
 
 public class FilesService {
+
     public FilesService() {
     }
+
     public String getFileResultados() { 
         return "src\\main\\resources\\resultados.csv";
     }
@@ -25,19 +27,17 @@ public class FilesService {
     }
 
     public String getFileTestRonda1() { 
-        return "src\\main\\resources\\testFiles\\ronda1.csv";
+        return "src\\test\\testFiles\\ronda1.csv";
     }
 
     public String getFileTestRonda2() { 
-        return "src\\main\\resources\\testFiles\\ronda2.csv";
+        return "src\\test\\testFiles\\ronda2.csv";
     }
 
-    public String getFileTestPron1() { 
-        return "src\\main\\resources\\testFiles\\pron1.csv";
-    }
+    public String getFileTestPron1() { return "src\\test\\testFiles\\pron1.csv";}
 
     public String getFileTestPron2() { 
-        return "src\\main\\resources\\testFiles\\pron2.csv";
+        return "src\\test\\testFiles\\pron2.csv";
     }
 
     /* Función que toma un Archivo de resultados y una Lista de partidos vacía.

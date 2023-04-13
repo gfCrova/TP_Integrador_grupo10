@@ -1,9 +1,5 @@
 package org.example.Entidades;
 
-import org.example.Entidades.Partido;
-import org.example.Entidades.Persona;
-import org.example.Entidades.Pronostico;
-
 import java.util.ArrayList;
 
 public class Ronda {

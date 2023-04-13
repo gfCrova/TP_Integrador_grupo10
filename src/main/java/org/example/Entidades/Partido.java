@@ -55,17 +55,13 @@ public class Partido {
         if (equipo == equipoLocal) {
             if (getGolesLocal() > getGolesVisitante()) {
                 return ResultadoEnum.GANADOR;
-            } else if (getGolesLocal() == getGolesVisitante()) {
-                return ResultadoEnum.EMPATE;
-            } else {
+            } else if (getGolesLocal() < getGolesVisitante()) {
                 return ResultadoEnum.PERDEDOR;
             }
         } else if (equipo == equipoVisitante) {
-            if (getGolesLocal() < getGolesVisitante()) {
+            if (getGolesVisitante() > getGolesLocal()) {
                 return ResultadoEnum.GANADOR;
-            } else if (getGolesLocal() == getGolesVisitante()) {
-                return ResultadoEnum.EMPATE;
-            } else {
+            } else if (getGolesVisitante() < getGolesLocal()) {
                 return ResultadoEnum.PERDEDOR;
             }
         }

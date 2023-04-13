@@ -8,10 +8,10 @@ import org.example.Entidades.Pronostico;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.nio.file.Files.readAllLines;
-import static org.example.Enums.ResultadoEnum.EMPATE;
-import static org.example.Enums.ResultadoEnum.GANADOR;
+import static org.example.Enums.ResultadoEnum.*;
 
 public class FilesService {
 
@@ -39,6 +39,7 @@ public class FilesService {
     public String getFileTestPron2() { 
         return "src\\test\\testFiles\\pron2.csv";
     }
+
 
     /* Función que toma un Archivo de resultados y una Lista de partidos vacía.
         Recorre el archivo y va agregando los partidos a la Lista */
@@ -99,6 +100,13 @@ public class FilesService {
                     }
                 }
                 user.getPronostico().add(pr);
+
+                // Mostrar resultados de pronósticos en pantalla
+                if(pr.puntos(user) == 1) {
+                    System.out.println(user.getNombre() + " - Pronóstico Partido " + (count + 1) + ": ACERTADO!. Puntos: +" + pr.puntos(user));
+                } else {
+                    System.out.println(user.getNombre() + " - Pronóstico Partido " + (count + 1) + ": NO acertado. Puntos: " + pr.puntos(user));
+                }
                 count++;
             }
         } catch (IOException e) {

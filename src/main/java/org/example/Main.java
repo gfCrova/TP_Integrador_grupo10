@@ -27,17 +27,21 @@ public class Main {
 
         Persona Diego = new Persona("Diego", ronda1, new ArrayList<>());
         Persona Julieta = new Persona("Julieta", ronda1, new ArrayList<>());
+        Persona Mauro = new Persona("Mauro", ronda1, new ArrayList<>());
 
         files.leerPronosticos(files.getFilePronosticos(), Diego);
         files.leerPronosticos(files.getFilePronosticos(), Julieta);
+        files.leerPronosticos(files.getFilePronosticos(), Mauro);
 
         // ***** Salida del Puntaje Total entre los participates.
 
         int total1 = Diego.getRonda().totalPuntos(Diego.getPronostico(), Diego);
         int total2 = Julieta.getRonda().totalPuntos(Julieta.getPronostico(), Julieta);
+        int total3 = Mauro.getRonda().totalPuntos(Mauro.getPronostico(), Mauro);
 
         System.out.println( "\n" + "Puntaje Total: \n" +
                 Diego.getNombre() + ": " + total1 + "\n" +
-                Julieta.getNombre() + ": " + total2);
+                Julieta.getNombre() + ": " + total2 + "\n" +
+                Mauro.getNombre() + ": " + total3);
     }
 }

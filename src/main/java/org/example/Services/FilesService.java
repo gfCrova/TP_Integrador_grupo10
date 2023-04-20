@@ -8,7 +8,6 @@ import org.example.Entidades.Pronostico;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 
 import static java.nio.file.Files.readAllLines;
 import static org.example.Enums.ResultadoEnum.*;

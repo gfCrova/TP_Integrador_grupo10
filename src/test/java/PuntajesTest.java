@@ -11,7 +11,7 @@ public class PuntajesTest {
     FilesService files = new FilesService();
     ArrayList<Partido> partidos = new ArrayList<Partido>();
     Ronda ronda = new Ronda("Ronda", partidos);
-    Persona Carlos = new Persona("Carlos", ronda, new ArrayList<>());
+    Persona Carlos = new Persona(1, "Carlos", ronda, new ArrayList<>());
 
     @org.junit.jupiter.api.Test
     public void testPuntosRonda1() {

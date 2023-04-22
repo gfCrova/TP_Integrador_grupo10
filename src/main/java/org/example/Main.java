@@ -25,9 +25,9 @@ public class Main {
 
         // ***** Salida de Resultados de Pronósticos.
 
-        Persona Diego = new Persona("Diego", ronda1, new ArrayList<>());
-        Persona Julieta = new Persona("Julieta", ronda1, new ArrayList<>());
-        Persona Mauro = new Persona("Mauro", ronda1, new ArrayList<>());
+        Persona Diego = new Persona(1, "Diego", ronda1, new ArrayList<>());
+        Persona Julieta = new Persona(2, "Julieta", ronda1, new ArrayList<>());
+        Persona Mauro = new Persona(3, "Mauro", ronda1, new ArrayList<>());
 
         files.leerPronosticos(files.getFilePronosticos(), Diego);
         files.leerPronosticos(files.getFilePronosticos(), Julieta);

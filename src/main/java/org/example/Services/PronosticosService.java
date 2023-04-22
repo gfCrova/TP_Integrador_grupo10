@@ -73,15 +73,16 @@ public class PronosticosService {
     public void generarPuntaje(Persona persona) {
         // Total de Puntos de partidos acertados
         int total = persona.getRonda().totalPuntos(persona.getPronostico(), persona);
+        System.out.println("Puntaje Total de " + persona.getNombre() +  " es = " + total + "\n");
 
         // Puntos Extra por 'Acertar' todos los pronósticos de la Ronda
         ConfigService configService = new ConfigService();
         configService.obtenerCofiguracion();
         if (total == 4) {
             total += configService.getPuntosExtraRonda();
-            System.out.println("\n" + persona.getNombre() + " ACERTASTE TODOS LOS PRONÓSTICOS DE LA RONDA!");
+            System.out.println(persona.getNombre() + " ACERTASTE TODOS LOS PRONÓSTICOS DE LA RONDA!");
             System.out.println("Bofificación de Puntos: +" + configService.getPuntosExtraRonda());
+            System.out.println("Puntaje Total de " + persona.getNombre() + " es = " + total + "\n");
         }
-        System.out.println("\n" + "Puntaje Total: \n" + persona.getNombre() + ": " + total + "\n");
     }
 }

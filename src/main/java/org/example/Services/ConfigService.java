@@ -6,10 +6,8 @@ import java.util.Properties;
 
 public class ConfigService {
 
-    private String driver;
-    private String url;
-    private String username;
-    private String password;
+    private String driver, url, username, password;
+    private int puntosPronAcertado, puntosExtraRonda, puntosExtraFase;
 
     public ConfigService() {
     }
@@ -30,6 +28,12 @@ public class ConfigService {
         return password;
     }
 
+    public int getPuntosPronAcertado() { return puntosPronAcertado; }
+
+    public int getPuntosExtraRonda() { return puntosExtraRonda; }
+
+    public int getPuntosExtraFase() { return puntosExtraFase; }
+
     public void obtenerCofiguracion() {
         try {
             Properties properties = new Properties();
@@ -40,7 +44,9 @@ public class ConfigService {
             this.url = properties.getProperty("url");
             this.username = properties.getProperty("username");
             this.password = properties.getProperty("password");
-
+            this.puntosPronAcertado = Integer.parseInt(properties.getProperty("puntos_pronostico_acertado"));
+            this.puntosExtraRonda = Integer.parseInt(properties.getProperty("puntos_extra_por_ronda_acertada"));
+            this.puntosExtraFase = Integer.parseInt(properties.getProperty("puntos_extra_por_fase_acertada"));
 
         } catch (IOException e) {
             e.printStackTrace();

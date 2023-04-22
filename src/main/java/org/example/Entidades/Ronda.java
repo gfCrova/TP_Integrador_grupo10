@@ -1,5 +1,7 @@
 package org.example.Entidades;
 
+import org.example.Services.ConfigService;
+
 import java.util.ArrayList;
 
 public class Ronda {
@@ -39,5 +41,10 @@ public class Ronda {
             i++;
         }
         return total;
+    }
+
+    @Override
+    public String toString() {
+        return "Ronda: " + numero + ", partidos: " + partidos;
     }
 }

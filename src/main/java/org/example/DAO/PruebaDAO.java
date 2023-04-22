@@ -1,16 +1,12 @@
 package org.example.DAO;
-
-import org.example.Entidades.Partido;
-import org.example.Entidades.Persona;
-import org.example.Entidades.Ronda;
-import org.example.Services.FilesService;
-
-import java.util.ArrayList;
+import org.example.Services.PronosticosService;
 
 public class PruebaDAO {
     public static void main(String[] args) {
 
-        PronosticosDAO dao = new PronosticosDAO();
-        dao.listarEmpleado();
+        PronosticosService pronosService = new PronosticosService();
+
+        pronosService.obtenerResultados();
+        pronosService.generarPronosticos();
     }
 }

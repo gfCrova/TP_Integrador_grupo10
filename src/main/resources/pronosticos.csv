@@ -1,12 +1,15 @@
 Diego,Argentina,x,,,Brasil
 Diego,Uruguay,,x,,Chile
-Diego,Peru,,,x,Colombia
+Diego,Peru,x,,,Colombia
 Diego,Bolivia,,,x,Paraguay
+Diego,Ecuador,x,,,México
 Julieta,Argentina,,x,,Brasil
 Julieta,Uruguay,x,,,Chile
 Julieta,Peru,x,,,Colombia
 Julieta,Bolivia,,,x,Paraguay
+Julieta,Ecuador,x,,,México
 Mauro,Argentina,,,x,Brasil
 Mauro,Uruguay,x,,,Chile
 Mauro,Peru,x,,,Colombia
 Mauro,Bolivia,,x,,Paraguay
+Mauro,Ecuador,,x,,México

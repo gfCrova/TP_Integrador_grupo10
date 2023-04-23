@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Persona {
 
+    private int id_persona;
     private String nombre;
     private Ronda ronda;
     private ArrayList<Pronostico> pronostico;
@@ -11,10 +12,30 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, Ronda ronda, ArrayList<Pronostico> pronosticos) {
+    public Persona(int id_persona, String nombre) {
+        this.id_persona = id_persona;
+        this.nombre = nombre;
+    }
+
+    public Persona(int id_persona, String nombre, ArrayList<Pronostico> pronostico) {
+        this.id_persona = id_persona;
+        this.nombre = nombre;
+        this.pronostico = pronostico;
+    }
+
+    public Persona(int id_persona, String nombre, Ronda ronda, ArrayList<Pronostico> pronosticos) {
+        this.id_persona = id_persona;
         this.nombre = nombre;
         this.ronda = ronda;
         this.pronostico = pronosticos;
+    }
+
+    public int getId_persona() {
+        return id_persona;
+    }
+
+    public void setId_persona(int id_persona) {
+        this.id_persona = id_persona;
     }
 
     public String getNombre() {
@@ -43,11 +64,9 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", ronda=" + ronda +
-                ", ronda=" + ronda +
-                ", pronostico=" + pronostico +
-                '}';
+        return "ID: " + id_persona +
+                ", Nombre: '" + nombre + '\'' +
+                ", Ronda: " + ronda +
+                ", Pronostico: " + pronostico + "\n";
     }
 }

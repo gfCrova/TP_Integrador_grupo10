@@ -4,9 +4,12 @@ import org.example.Services.PronosticosService;
 public class PruebaDAO_Entrega3 {
     public static void main(String[] args) {
 
-        PronosticosService pronosService = new PronosticosService();
+        // Ronda N° + Partidos
+        PartidosDAO partidosDAO = new PartidosDAO();
+        System.out.println(partidosDAO.obtenerRondas().get(0));
 
-        pronosService.obtenerResultados();
+        // Pronósticos
+        PronosticosService pronosService = new PronosticosService();
         pronosService.generarPronosticos();
     }
 }

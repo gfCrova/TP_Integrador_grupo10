@@ -15,7 +15,6 @@ public class PronosticosDAO {
 
     public List<Pronostico> listarPronosticos() {
 
-        Pronostico nuevoPronostico = new Pronostico();
         List<Pronostico> prDao = new ArrayList<>();
         Connection con = ConexionFactory.getConnection();
 
@@ -56,7 +55,7 @@ public class PronosticosDAO {
     public List<Persona> listarPersonas() {
 
         Connection con = ConexionFactory.getConnection();
-        Persona nuevaPersona = new Persona();
+        Persona nuevaPersona;
         List<Persona> listaPersonas = new ArrayList<Persona>();
 
         try (con) {

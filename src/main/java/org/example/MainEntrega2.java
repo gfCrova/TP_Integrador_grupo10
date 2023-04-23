@@ -7,7 +7,7 @@ import org.example.Services.FilesService;
 
 import java.util.ArrayList;
 
-public class Entrega2 {
+public class MainEntrega2 {
 
     public static void main(String[] args) {
         FilesService files = new FilesService();

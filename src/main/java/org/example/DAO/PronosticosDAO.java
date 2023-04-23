@@ -21,8 +21,9 @@ public class PronosticosDAO {
 
         try (con) {
 
-            final PreparedStatement statement = con.prepareStatement("SELECT pron.id_pronosticos, pron.persona, pron.equipo1, pron.gana1, pron.empate, pron.gana2, pron.equipo2, pron.personas_pron_id, per.id_personas, per.nombre " +
-                    "FROM pronosticos pron INNER JOIN personas per ON pron.personas_pron_id = per.id_personas");
+            final PreparedStatement statement = con.prepareStatement("SELECT * FROM pronosticos");
+            //final PreparedStatement statement = con.prepareStatement("SELECT pron.id_pronosticos, pron.persona, pron.equipo1, pron.gana1, pron.empate, pron.gana2, pron.equipo2, pron.personas_pron_id, per.id_personas, per.nombre " +
+                    //"FROM pronosticos pron INNER JOIN personas per ON pron.personas_pron_id = per.id_personas");
 
             try (statement) {
                 statement.execute();
@@ -31,17 +32,13 @@ public class PronosticosDAO {
                 try (rs) {
                     while (rs.next()) {
 
-                        int id = rs.getInt("pron.id_pronosticos");
-                        String persona = rs.getString("pron.persona");
-                        String equipo1 = rs.getString("pron.equipo1");
-                        String gana1 = rs.getString("pron.gana1");
-                        String empata = rs.getString("pron.empate");
-                        String gana2 = rs.getString("pron.gana2");
-                        String equipo2 = rs.getString("pron.equipo2");
-                        int personaPronosticoId = rs.getInt("pron.personas_pron_id");
-
-                        int id_personas = rs.getInt("per.id_personas");
-                        String nombre = rs.getString("per.nombre");
+                        int id = rs.getInt("id_pronosticos");
+                        String persona = rs.getString("persona");
+                        String equipo1 = rs.getString("equipo1");
+                        String gana1 = rs.getString("gana1");
+                        String empata = rs.getString("empate");
+                        String gana2 = rs.getString("gana2");
+                        String equipo2 = rs.getString("equipo2");
 
                         Pronostico pr = new Pronostico(id, persona, equipo1, gana1, empata, gana2, equipo2);
                         prDao.add(pr);

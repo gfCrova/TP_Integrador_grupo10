@@ -1,5 +1,6 @@
 package org.example.Services;
 
+import org.example.DAO.PartidosDAO;
 import org.example.DAO.PronosticosDAO;
 import org.example.Entidades.*;
 
@@ -11,30 +12,28 @@ import static org.example.Enums.ResultadoEnum.GANADOR;
 
 public class PronosticosService {
 
-    ArrayList<Partido> partidosRonda1 = new ArrayList<>();
-    Ronda ronda1 = new Ronda("Ronda 1", partidosRonda1);
-
-    // Tomar lista de resultados de un archivo
-    public void obtenerResultados() {
-        FilesService files = new FilesService();
-        files.leerResultados(files.getFileResultados(), partidosRonda1);
-
-        for (int i = 0; i < ronda1.getPartidos().size(); i++) {
-            System.out.print("Partido " + (i + 1) + ": " + ronda1.getPartidos().get(i));
-        }
-        System.out.println("\n");
-    }
-
     public void generarPronosticos() {
 
         PronosticosDAO dao = new PronosticosDAO();
         List<Pronostico> listaPron = dao.listarPronosticos();
         List<Persona> listaPersonas = dao.listarPersonas();
 
+        PartidosDAO partidosDAO = new PartidosDAO();
+        List<Partido> listaPartidos = partidosDAO.obtenerPartidos();
+        List<Ronda> listaRondas =  partidosDAO.obtenerRondas();
+
+        for (Ronda ronda : listaRondas) {
+            for (Partido partido : listaPartidos) {
+                if (partido.getRondaNumero() == ronda.getId()) {
+                    ronda.setPartidos(listaPartidos);
+                }
+            }
+        }
+
         for (Persona persona : listaPersonas) {
-            persona.setRonda(ronda1);
-            persona.setPronostico(new ArrayList<Pronostico>());
             int count = 0;
+            persona.setRonda(listaRondas.get(count));
+            persona.setPronostico(new ArrayList<Pronostico>());
             while (count < persona.getRonda().getPartidos().size()) {
 
                 Equipo equipoLocal = persona.getRonda().getPartidos().get(count).getEquipoLocal();
@@ -58,7 +57,7 @@ public class PronosticosService {
                 }
                 persona.getPronostico().add(pr);
 
-                if(pr.puntos(persona) == 1) {
+                if (pr.puntos(persona) == 1) {
                     System.out.println(persona.getNombre() + " - Pronóstico Partido " + (count + 1) + ": ACERTADO!. Puntos: +" + pr.puntos(persona));
                 } else {
                     System.out.println(persona.getNombre() + " - Pronóstico Partido " + (count + 1) + ": NO acertado. Puntos: " + pr.puntos(persona));
@@ -78,7 +77,8 @@ public class PronosticosService {
         // Puntos Extra por 'Acertar' todos los pronósticos de la Ronda
         ConfigService configService = new ConfigService();
         configService.obtenerCofiguracion();
-        if (total == 5) {
+        // total == 5
+        if (total == persona.getRonda().getPartidos().size()) {
             total += configService.getPuntosExtraRonda();
             System.out.println(persona.getNombre() + " ACERTASTE TODOS LOS PRONÓSTICOS DE LA RONDA!");
             System.out.println("Bofificación de Puntos: +" + configService.getPuntosExtraRonda());

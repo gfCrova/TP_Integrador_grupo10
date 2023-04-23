@@ -26,8 +26,8 @@ public class PronosticosService {
     }
 
     public void generarPronosticos() {
-        PronosticosDAO dao = new PronosticosDAO();
 
+        PronosticosDAO dao = new PronosticosDAO();
         List<Pronostico> listaPron = dao.listarPronosticos();
         List<Persona> listaPersonas = dao.listarPersonas();
 
@@ -78,7 +78,7 @@ public class PronosticosService {
         // Puntos Extra por 'Acertar' todos los pronósticos de la Ronda
         ConfigService configService = new ConfigService();
         configService.obtenerCofiguracion();
-        if (total == 4) {
+        if (total == 5) {
             total += configService.getPuntosExtraRonda();
             System.out.println(persona.getNombre() + " ACERTASTE TODOS LOS PRONÓSTICOS DE LA RONDA!");
             System.out.println("Bofificación de Puntos: +" + configService.getPuntosExtraRonda());

@@ -50,11 +50,8 @@ public class PartidosDAO {
         return partidos;
     }
 
-    List<Partido> list = obtenerPartidos();
-
     public List<Ronda> obtenerRondas() {
 
-        Ronda ronda;
         Connection con = ConexionFactory.getConnection();
 
         try (con) {
@@ -72,15 +69,19 @@ public class PartidosDAO {
                         int fk_fases = Integer.parseInt(rs.getString("r.fases_id"));
                         int rondas_id = Integer.parseInt(rs.getString("p.rondas_id"));
 
-                        ronda = new Ronda();
-                        ronda.setId(id);
-                        ronda.setNombre(nombreDeRonda);
-                        ronda.setNumero(fk_fases);
-                        if (ronda.getId() == rondas_id) {
-                            ronda.setPartidos(list);
+                        Ronda ronda = new Ronda();
+                        List<Partido> list = obtenerPartidos();
+                        for(int i = 0; i < list.size(); i++){
+                            if (id == list.get(i).getRondaNumero()) {
+                                ronda.setId(id);
+                                ronda.setNombre(nombreDeRonda);
+                                ronda.setNumero(rondas_id);
+                                ronda.setPartidos(list);
+                            }
                         }
                         listaRonda.add(ronda);
                     }
+
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -90,4 +91,15 @@ public class PartidosDAO {
         }
         return listaRonda;
     }
+
+    public List<Partido> filtrarPartidosPorClaveForanea(List<Partido> listaPartidos, int claveForanea) {
+        List<Partido> listaFiltrada = new ArrayList<>();
+        for (Partido partido : listaPartidos) {
+            if (partido.getRondaNumero() == claveForanea) {
+                listaFiltrada.add(partido);
+            }
+        }
+        return listaFiltrada;
+    }
+
 }

@@ -59,11 +59,9 @@ public class Ronda {
     }
 
     public int totalPuntos(List<Pronostico> pronosticos, Persona persona) {
-        int i = 0;
         int total = 0;
-        while (i < pronosticos.size()) {
-            total += pronosticos.get(i).puntos(persona);
-            i++;
+        for (Pronostico pron : pronosticos) {
+            total += pron.puntos(persona);
         }
         return total;
     }
@@ -71,6 +69,6 @@ public class Ronda {
     @Override
     public String toString() {
         return "Ronda: " + id + ", Nombre: " + nombre + ", Fase: " + numero + "\n" +
-                "Lista de Partidos: \n" + this.partidos + "\n";
+                "Lista de Partidos: \n" + partidos + "\n";
     }
 }

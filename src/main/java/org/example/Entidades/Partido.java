@@ -131,6 +131,6 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "\t" + "Partido: " + id + " " + equipoLocal + " " + golesLocal + " - " + golesVisitante + " " + equipoVisitante + ", Ronda: " + rondaNumero + "\n";
+        return "\t" + equipoLocal + " " + golesLocal + " - " + golesVisitante + " " + equipoVisitante + "\n";
     }
 }

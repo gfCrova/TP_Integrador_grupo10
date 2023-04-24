@@ -4,22 +4,21 @@ import org.example.Enums.ResultadoEnum;
 import org.example.Services.ConfigService;
 
 public class Pronostico {
-    private Integer idPronostico;
+    private Integer idPronostico, idPersona;
     private String persona, equipo1, gana1, empate, gana2, equipo2;
 
     private Partido partido;
     private Equipo equipo;
     private ResultadoEnum resultado;
 
-    public Pronostico() {
-    }
+    private ResultadoEnum comprobar;
 
     public Pronostico(Partido partido, Equipo equipo) {
         this.partido = partido;
         this.equipo = equipo;
     }
 
-    public Pronostico(int id, String persona, String equipo1, String gana1, String empate, String gana2, String equipo2) {
+    public Pronostico(int id, String persona, String equipo1, String gana1, String empate, String gana2, String equipo2, int idPersona) {
         this.idPronostico = id;
         this.persona = persona;
         this.equipo1 = equipo1;
@@ -27,6 +26,7 @@ public class Pronostico {
         this.empate = empate;
         this.gana2 = gana2;
         this.equipo2 = equipo2;
+        this.idPersona = idPersona;
     }
 
     public Integer getIdPronostico() {
@@ -85,6 +85,14 @@ public class Pronostico {
         this.equipo2 = equipo2;
     }
 
+    public Integer getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Integer idPersona) {
+        this.idPersona = idPersona;
+    }
+
     public Partido getPartido() {
         return partido;
     }
@@ -109,6 +117,13 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
+    public ResultadoEnum getComprobar() {
+        return comprobar;
+    }
+
+    public void setComprobar(ResultadoEnum comprobar) {
+        this.comprobar = comprobar;
+    }
 
     public int puntos(Persona persona) {
         int total = 0;

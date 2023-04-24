@@ -13,10 +13,10 @@ import java.util.List;
 
 public class PronosticosDAO {
 
+    List<Pronostico> prDao = new ArrayList<>();
+
     public List<Pronostico> listarPronosticos() {
 
-        Pronostico nuevoPronostico = new Pronostico();
-        List<Pronostico> prDao = new ArrayList<>();
         Connection con = ConexionFactory.getConnection();
 
         try (con) {
@@ -39,8 +39,9 @@ public class PronosticosDAO {
                         String empata = rs.getString("empate");
                         String gana2 = rs.getString("gana2");
                         String equipo2 = rs.getString("equipo2");
+                        int persona_id = Integer.parseInt(rs.getString("persona_id"));
 
-                        Pronostico pr = new Pronostico(id, persona, equipo1, gana1, empata, gana2, equipo2);
+                        Pronostico pr = new Pronostico(id, persona, equipo1, gana1, empata, gana2, equipo2, persona_id);
                         prDao.add(pr);
                     }
                 } catch (SQLException e) {
@@ -56,7 +57,7 @@ public class PronosticosDAO {
     public List<Persona> listarPersonas() {
 
         Connection con = ConexionFactory.getConnection();
-        Persona nuevaPersona = new Persona();
+        Persona nuevaPersona;
         List<Persona> listaPersonas = new ArrayList<Persona>();
 
         try (con) {

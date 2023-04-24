@@ -9,7 +9,7 @@ public class Partido {
     private int golesLocal;
     private int golesVisitante;
 
-    private int id, golesEquipo1, golesEquipo2;
+    private int id, golesEquipo1, golesEquipo2, rondaNumero;
     private String equipo1, equipo2;
 
 
@@ -23,12 +23,13 @@ public class Partido {
         this.equipoVisitante = equipoVisitante;
     }
 
-    public Partido(int id, String equipo1, int golesEquipo1, int golesEquipo2, String equipo2) {
+    public Partido(int id, Equipo equipo1, int golesEquipo1, int golesEquipo2, Equipo equipo2, int rondaNumero) {
         this.id = id;
-        this.equipo1 = equipo1;
-        this.golesEquipo1 = golesEquipo1;
-        this.golesEquipo2 = golesEquipo2;
-        this.equipo2 = equipo2;
+        this.equipoLocal = equipo1;
+        this.golesLocal = golesEquipo1;
+        this.golesVisitante = golesEquipo2;
+        this.equipoVisitante = equipo2;
+        this.rondaNumero = rondaNumero;
     }
 
     public int getId() {
@@ -69,6 +70,14 @@ public class Partido {
 
     public void setEquipo2(String equipo2) {
         this.equipo2 = equipo2;
+    }
+
+    public int getRondaNumero() {
+        return rondaNumero;
+    }
+
+    public void setRondaNumero(int rondaNumero) {
+        this.rondaNumero = rondaNumero;
     }
 
     public Equipo getEquipoLocal() {

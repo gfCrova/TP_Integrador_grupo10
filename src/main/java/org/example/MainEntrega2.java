@@ -14,7 +14,7 @@ public class MainEntrega2 {
 
         // ***** Salida de Partidos de la Ronda
         ArrayList<Partido> partidosRonda1 = new ArrayList<>();
-        Ronda ronda1 = new Ronda("Ronda 1", partidosRonda1);
+        Ronda ronda1 = new Ronda(1, partidosRonda1);
 
         files.leerResultados(files.getFileResultados(), partidosRonda1);
 

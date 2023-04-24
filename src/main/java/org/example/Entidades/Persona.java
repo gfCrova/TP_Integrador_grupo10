@@ -1,13 +1,14 @@
 package org.example.Entidades;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Persona {
 
     private int id_persona;
     private String nombre;
     private Ronda ronda;
-    private ArrayList<Pronostico> pronostico;
+    private List<Pronostico> pronostico;
 
     public Persona() {
     }
@@ -54,11 +55,11 @@ public class Persona {
         this.ronda = ronda;
     }
 
-    public ArrayList<Pronostico> getPronostico() {
+    public List<Pronostico> getPronostico() {
         return pronostico;
     }
 
-    public void setPronostico(ArrayList<Pronostico> pronostico) {
+    public void setPronostico(List<Pronostico> pronostico) {
         this.pronostico = pronostico;
     }
 

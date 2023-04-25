@@ -1,13 +1,13 @@
-package org.example.DAO;
+package org.example;
+import org.example.DAO.PartidosDAO;
 import org.example.Entidades.Partido;
-import org.example.Entidades.Pronostico;
 import org.example.Entidades.Ronda;
 import org.example.Services.PronosticosService;
 
 import java.util.HashSet;
 import java.util.List;
 
-public class PruebaDAO_Entrega3 {
+public class MainEntrega3 {
     public static void main(String[] args) {
 
         PronosticosService pronosService = new PronosticosService();

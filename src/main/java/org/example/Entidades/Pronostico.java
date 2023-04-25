@@ -10,7 +10,6 @@ public class Pronostico {
     private Partido partido;
     private Equipo equipo;
     private ResultadoEnum resultado;
-
     private ResultadoEnum comprobar;
 
     public Pronostico(Partido partido, Equipo equipo) {
@@ -131,7 +130,6 @@ public class Pronostico {
         configService.obtenerCofiguracion();
         if (partido.resultadoPartido(equipo).equals(resultado)) {
             total += configService.getPuntosPronAcertado();
-            return total;
         }
         return total;
     }

@@ -15,17 +15,16 @@ public class PruebaDAO_Entrega3 {
         List<Ronda> rondas = partidosDAO.obtenerRondas();
         HashSet<Integer> hasSet = new HashSet<>();
 
+
         System.out.println("\n Pronósticos Deportivos \n");
 
-        // Rondas
-        int i = 0;
+        // Rondas con sus respectivos Partidos
         for (Ronda ron : rondas) {
             if (!hasSet.contains(ron.getId())) {
                 hasSet.add(ron.getId());
-                System.out.println("Ronda: " + ron.getId() + " " + ron.getNombre() + "\n" +
-                        partidosDAO.filtrarPartidosPorClaveForanea(ron.getPartidos(), hasSet.size()) + "\n");
+                List<Partido> li = partidosDAO.filtrarPartidosPorClaveForanea(ron.getPartidos(), hasSet.size());
+                System.out.println("Ronda: " + ron.getId() + " " + ron.getNombre() + "\n" + li + "\n");
             }
-            i++;
         }
 
         // Pronósticos

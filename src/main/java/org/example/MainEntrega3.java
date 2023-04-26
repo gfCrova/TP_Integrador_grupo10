@@ -13,12 +13,11 @@ public class MainEntrega3 {
         PronosticosService pronosService = new PronosticosService();
         PartidosDAO partidosDAO = new PartidosDAO();
         List<Ronda> rondas = partidosDAO.obtenerRondas();
-        HashSet<Integer> hasSet = new HashSet<>();
 
-
-        System.out.println("\n Pronósticos Deportivos \n");
+        System.out.println("\nPronósticos Deportivos \n");
 
         // Rondas con sus respectivos Partidos
+        HashSet<Integer> hasSet = new HashSet<>();
         for (Ronda ron : rondas) {
             if (!hasSet.contains(ron.getId())) {
                 hasSet.add(ron.getId());

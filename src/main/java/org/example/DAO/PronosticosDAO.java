@@ -40,8 +40,9 @@ public class PronosticosDAO {
                         String gana2 = rs.getString("gana2");
                         String equipo2 = rs.getString("equipo2");
                         int persona_id = Integer.parseInt(rs.getString("persona_id"));
+                        int ronda_id = Integer.parseInt(rs.getString("ronda_id"));
 
-                        Pronostico pr = new Pronostico(id, persona, equipo1, gana1, empata, gana2, equipo2, persona_id);
+                        Pronostico pr = new Pronostico(id, persona, equipo1, gana1, empata, gana2, equipo2, persona_id, ronda_id);
                         prDao.add(pr);
                     }
                 } catch (SQLException e) {

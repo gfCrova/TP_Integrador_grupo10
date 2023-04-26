@@ -4,6 +4,9 @@ public class Equipo {
     private String nombre;
     private String descripcion;
 
+    public Equipo() {
+    }
+
     public Equipo(String nombre) {
         this.nombre = nombre;
     }

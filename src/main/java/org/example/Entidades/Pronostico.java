@@ -3,8 +3,12 @@ package org.example.Entidades;
 import org.example.Enums.ResultadoEnum;
 import org.example.Services.ConfigService;
 
+import java.util.Objects;
+
+import static org.example.Enums.ResultadoEnum.ACERTADO;
+
 public class Pronostico {
-    private Integer idPronostico, idPersona;
+    private Integer idPronostico, idPersona, idRonda;
     private String persona, equipo1, gana1, empate, gana2, equipo2;
 
     private Partido partido;
@@ -17,7 +21,7 @@ public class Pronostico {
         this.equipo = equipo;
     }
 
-    public Pronostico(int id, String persona, String equipo1, String gana1, String empate, String gana2, String equipo2, int idPersona) {
+    public Pronostico(int id, String persona, String equipo1, String gana1, String empate, String gana2, String equipo2, int idPersona, int idRonda) {
         this.idPronostico = id;
         this.persona = persona;
         this.equipo1 = equipo1;
@@ -26,6 +30,10 @@ public class Pronostico {
         this.gana2 = gana2;
         this.equipo2 = equipo2;
         this.idPersona = idPersona;
+        this.idRonda = idRonda;
+    }
+
+    public Pronostico() {
     }
 
     public Integer getIdPronostico() {
@@ -76,9 +84,7 @@ public class Pronostico {
         this.gana2 = gana2;
     }
 
-    public String getEquipo2() {
-        return equipo2;
-    }
+    public String getEquipo2() { return equipo2; }
 
     public void setEquipo2(String equipo2) {
         this.equipo2 = equipo2;
@@ -91,6 +97,10 @@ public class Pronostico {
     public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
     }
+
+    public Integer getIdRonda() { return idRonda; }
+
+    public void setIdRonda(Integer idRonda) { this.idRonda = idRonda; }
 
     public Partido getPartido() {
         return partido;
@@ -142,6 +152,8 @@ public class Pronostico {
                 ", Gana1: '" + gana1 + '\'' +
                 ", Empate: '" + empate + '\'' +
                 ", Gana2: '" + gana2 + '\'' +
-                ", Equipo2: '" + equipo2 + '\'' + "\n";
+                ", Equipo2: '" + equipo2 + '\'' +
+                ", idPersona: '" + idPersona + '\'' +
+                ", idRonda: '" + idRonda + '\'' + "\n";
     }
 }

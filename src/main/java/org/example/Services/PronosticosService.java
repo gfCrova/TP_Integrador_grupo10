@@ -34,14 +34,10 @@ public class PronosticosService {
 
                 pr = new Pronostico(partido, equipoLocal);
 
-                int aciertosEnRondaActual = 0;
                 for (Pronostico lpr : listaPron) {
                     pr.setIdRonda(listaRondas.get(count).getId());
                     pr.setIdPersona(lpr.getIdPersona());
                     if (lpr.getIdRonda() == listaRondas.get(count).getId()) {
-                        if (pr.puntos(persona) == configService.getPuntosPronAcertado()) {
-                            aciertosEnRondaActual++;
-                        }
                         if (lpr.getPersona().equals(persona.getNombre())) {
                             if (lpr.getEquipo1().equals(equipoLocal.getNombre()) || lpr.getEquipo2().equals(equipoVisitante.getNombre())) {
                                 if (lpr.getGana1().contains("x")) {
@@ -58,10 +54,6 @@ public class PronosticosService {
                 }
                 persona.getPronostico().add(pr);
                 salidaPronosticos(persona, count);
-                if (aciertosEnRondaActual == listaRondas.get(count).getPartidos().size()) {
-                    int bonificacion = configService.getPuntosExtraRonda();
-                    System.out.println(persona.getNombre() + " - (bonificación de " + bonificacion + " puntos por acertar todos los pronósticos en la ronda)");
-                }
                 count++;
             }
             System.out.println("\n");
@@ -90,19 +82,17 @@ public class PronosticosService {
         }
 
         /*int aciertosEnRondaActual = 0;
-        for (Pronostico pronostico : listaPron) {
-            if (pron.getIdRonda() == listaRondas.get(count).getId()) {
-                if (pron.puntos(persona) == configService.getPuntosPronAcertado()) {
-                    aciertosEnRondaActual++;
-                }
+        if (pron.getIdRonda() == listaRondas.get(count).getId()) {
+            if (pron.puntos(persona) == configService.getPuntosPronAcertado()) {
+                aciertosEnRondaActual++;
             }
         }
-        if (aciertosEnRondaActual == listaRondas.get(count).getPartidos().size()) { // si la persona acertó todos los pronósticos en la ronda actual
+        if (aciertosEnRondaActual == listaRondas.get(count).getNumero()) { // si la persona acertó todos los pronósticos en la ronda actual
             int bonificacion = configService.getPuntosExtraRonda(); // número de puntos de bonificación
             //persona.sumarPuntos(bonificacion); // sumar los puntos de bonificación a la puntuación total de la persona
-            System.out.println(persona.getNombre() + " - (bonificación de " + bonificacion + " puntos por acertar todos los pronósticos en la ronda)");
+            System.out.println(persona.getNombre() + " - ( BONIFICACIÓN DE '" + bonificacion + "' PUNTOS POR ACERTAR TODOS LOS PRONÓSTICOS DE LA RONDA: " + aciertosEnRondaActual);
         }
-        if (pr.getIdRonda() == listaRondas.get(count).getId() && pr.getComprobar() == ACERTADO) {
+        /*if (pr.getIdRonda() == listaRondas.get(count).getId() && pr.getComprobar() == ACERTADO) {
                 System.out.println(persona.getNombre() + " ACERTASTE TODOS LOS PRONÓSTICOS DE LA RONDA: " + pr.getPartido().getRondaNumero() + " Bonificación de puntos: " + configService.getPuntosExtraRonda());
         }*/
     }
